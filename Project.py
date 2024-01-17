@@ -53,21 +53,31 @@ class tkinterApp(tk.Tk):
 class StartPage(tk.Frame):
     def __init__(self, parent, controller): 
         tk.Frame.__init__(self, parent)
+
+        #Functions
+        def delete():
+            entry_cctb_number.delete(0, END)
+            
+        def search_for_cctb_number():
+            cctb_number = entry_cctb_number.get()
+            show_name_and_course()
+            
+        def show_name_and_course():
+            label_name = tk.Label(self, text = f"Name")
+            label_course = tk.Label(self, text = f"Course")
+            confirm_btn = tk.Button(self, text = "Show scheadule",
+                                command = lambda : controller.show_frame(Scheadule))
+            confirm_btn.grid(row = 6, column = 2)
+            label_name.grid(row = 4, columnspan = 2)
+            label_course.grid(row = 5, columnspan = 2)
          
         # label of frame Layout HomePage
         label_cctb_number = tk.Label(self, text="Enter student's CCTB number", pady = 10)
         entry_cctb_number = tk.Entry(self)
         delete_btn = tk.Button(self, text ="Delete",
-                               command = None)
-        search_btn = tk.Button(self, text="Search", command = None)
+                               command = delete)
+        search_btn = tk.Button(self, text="Search", command = search_for_cctb_number)
         
-        label_name = tk.Label(self, text = f"Name")
-        label_course = tk.Label(self, text = f"Course")
-        confirm_btn = tk.Button(self, text = "Show scheadule",
-                                command = lambda : controller.show_frame(Scheadule))
-        confirm_btn.grid(row = 6, column = 2)
-        label_name.grid(row = 4, columnspan = 2)
-        label_course.grid(row = 5, columnspan = 2)
          
         # putting the grid in its place by using
         # grid
@@ -76,29 +86,6 @@ class StartPage(tk.Frame):
         entry_cctb_number.grid(row = 1, columnspan = 2)
         delete_btn.grid(row = 2, column = 0)
         search_btn.grid(row = 2, column = 1)
-  
-        #button1 = ttk.Button(self, text ="Page 1",
-        #command = lambda : controller.show_frame(Page1))
-     
-        # putting the button in its place by
-        # using grid
-        #button1.grid(row = 1, column = 1, padx = 10, pady = 10)
-  
-        ## button to show frame 2 with text layout2
-        #button2 = ttk.Button(self, text ="Page 2",
-        #command = lambda : controller.show_frame(Page2))
-     
-        # putting the button in its place by
-        # using grid
-        #button2.grid(row = 2, column = 1, padx = 10, pady = 10)
-
-    #!NEED TO FINISH
-    def delete():
-        entry_cctb_number.delete(0, END)
-
-    def search_for_cctb_number():
-        cctb_number = entry_cctb_number.get()
-        show_name_and_course()
 
 # second window frame page1 
 class Scheadule(tk.Frame):
@@ -111,7 +98,7 @@ class Scheadule(tk.Frame):
   
         # button to show frame 2 with text
         # layout2
-        new_btn = tk.Button(self, text ="StartPage",
+        new_btn = tk.Button(self, text ="Search a new scheadule",
                             command = lambda : controller.show_frame(StartPage))
      
         # putting the button in its place 
@@ -127,45 +114,6 @@ class Scheadule(tk.Frame):
         # using grid
         #button2.grid(row = 2, column = 1, padx = 10, pady = 10)
 
-
-#Functions
-#def search_for_cctb_number():
- #   cctb_number = entry_cctb_number.get()
-  #  show_name_and_course()
-
-#def delete():
- #   entry_cctb_number.delete(0, END)
-
-#def show_name_and_course():
-#    label_name = tk.Label(window, text = f"Name")
-#    label_course = tk.Label(window, text = f"Course")
-#    confirm_btn = tk.Button(window, text = "Show scheadule")
-#    confirm_btn.grid(row = 6, column = 2)
-#    label_name.grid(row = 4, columnspan = 2)
-#    label_course.grid(row = 5, columnspan = 2)
-    
-    
-#window = tk.Tk()
-#window.geometry('420x420')
-#window.title('CCTB Scheadule')
-#label_cctb_number = tk.Label(window, text="Enter student's CCTB number", pady = 10)
-#entry_cctb_number = tk.Entry(window)
-#delete_btn = tk.Button(window, text ="Delete", command = delete)
-#search_btn = tk.Button(window, text="Search", command=search_for_cctb_number)
-
-
-
-#Containers grid
-#label_cctb_number.grid(row = 1, columnspan = 2)
-#entry_cctb_number.grid(row = 2, columnspan = 2)
-#delete_btn.grid(row = 3, column = 0)
-#search_btn.grid(row = 3, column = 1)
-
-
-# Driver Code
-#window = tkinterApp()
-#window.mainloop()
-#window.mainloop()
 
 # Driver Code
 app = tkinterApp()
