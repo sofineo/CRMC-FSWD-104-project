@@ -71,7 +71,7 @@ class StartPage(tk.Frame):
             label_name.config(text = f"Name")
             label_course.config(text = f"Course")
             confirm_btn = tk.Button(self, text = "Show scheadule",
-                                command = lambda : [clear(), controller.show_frame(Scheadule)])   
+                                command = lambda : [clear(), controller.show_frame(Scheadule), confirm_btn.grid_forget()])   
             confirm_btn.grid(row = 6, column = 2)
 
             
