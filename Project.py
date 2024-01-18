@@ -55,6 +55,11 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         #Functions
+
+        def clear():
+            label_name.config(text = "")
+            label_course.config(text = "")
+            
         def delete():
             entry_cctb_number.delete(0, END)
             
@@ -63,13 +68,13 @@ class StartPage(tk.Frame):
             show_name_and_course()
             
         def show_name_and_course():
-            label_name = tk.Label(self, text = f"Name")
-            label_course = tk.Label(self, text = f"Course")
+            label_name.config(text = f"Name")
+            label_course.config(text = f"Course")
             confirm_btn = tk.Button(self, text = "Show scheadule",
-                                command = lambda : controller.show_frame(Scheadule))
+                                command = lambda : [clear(), controller.show_frame(Scheadule)])   
             confirm_btn.grid(row = 6, column = 2)
-            label_name.grid(row = 4, columnspan = 2)
-            label_course.grid(row = 5, columnspan = 2)
+
+            
          
         # label of frame Layout HomePage
         label_cctb_number = tk.Label(self, text="Enter student's CCTB number", pady = 10)
@@ -77,15 +82,18 @@ class StartPage(tk.Frame):
         delete_btn = tk.Button(self, text ="Delete",
                                command = delete)
         search_btn = tk.Button(self, text="Search", command = search_for_cctb_number)
-        
-         
+        label_name = tk.Label(self, text = "")
+        label_course = tk.Label(self, text = "")
+
         # putting the grid in its place by using
         # grid
-        #label.grid(row = 0, column = 4, padx = 10, pady = 10) 
         label_cctb_number.grid(row = 0, columnspan = 2)
         entry_cctb_number.grid(row = 1, columnspan = 2)
         delete_btn.grid(row = 2, column = 0)
         search_btn.grid(row = 2, column = 1)
+        label_name.grid(row = 4, columnspan = 2)
+        label_course.grid(row = 5, columnspan = 2)
+
 
 # second window frame page1 
 class Scheadule(tk.Frame):
