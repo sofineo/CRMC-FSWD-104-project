@@ -5,11 +5,15 @@ import csv
 
 
 #CSV file 
-with open('test.csv', newline='') as csvfile:
-    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-    for row in spamreader:
-        print(', '.join(row))
-
+with open('test.csv', encoding='utf-8-sig',  newline='') as csvfile:
+    csvData = csv.reader(csvfile) 
+    headers = next(csvData)
+    for row in csvData:
+        data_dict = {}
+        for i, value in enumerate(row):
+            data_dict[headers[i]] = value 
+        print(data_dict)
+        
 #Class
 class tkinterApp(tk.Tk):
     # __init__ function for class tkinterApp
@@ -62,6 +66,16 @@ class StartPage(tk.Frame):
             
         def delete():
             entry_cctb_number.delete(0, END)
+
+        def validate_number():
+            label_error_message.config(text="")
+            try:
+                int(entry_cctb_number.get())
+                search_for_cctb_number()
+
+            except ValueError:
+                label_error_message.config(text="Please type only numbers!")
+                
             
         def search_for_cctb_number():
             cctb_number = entry_cctb_number.get()
@@ -71,7 +85,11 @@ class StartPage(tk.Frame):
             label_name.config(text = f"Name")
             label_course.config(text = f"Course")
             confirm_btn = tk.Button(self, text = "Show scheadule",
-                                command = lambda : [clear(), controller.show_frame(Scheadule), confirm_btn.grid_forget()])   
+                                command = lambda : 
+                                [clear(), 
+                                controller.show_frame(Scheadule), 
+                                confirm_btn.grid_forget(),
+                                delete()])   
             confirm_btn.grid(row = 6, column = 2)
 
             
@@ -81,9 +99,10 @@ class StartPage(tk.Frame):
         entry_cctb_number = tk.Entry(self)
         delete_btn = tk.Button(self, text ="Delete",
                                command = delete)
-        search_btn = tk.Button(self, text="Search", command = search_for_cctb_number)
+        search_btn = tk.Button(self, text="Search", command = validate_number)
         label_name = tk.Label(self, text = "")
         label_course = tk.Label(self, text = "")
+        label_error_message = tk.Label(self, text = "")
 
         # putting the grid in its place by using
         # grid
@@ -93,6 +112,7 @@ class StartPage(tk.Frame):
         search_btn.grid(row = 2, column = 1)
         label_name.grid(row = 4, columnspan = 2)
         label_course.grid(row = 5, columnspan = 2)
+        label_error_message.grid()
 
 
 # second window frame page1 
