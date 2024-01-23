@@ -19,20 +19,21 @@ def submit():
     entry_ct.config(state =DISABLED)
 def delete():
     entry_ct.delete(0, END)
-def backspace():
-    entry_ct.delete(len(entry_ct.get())-1, END)
+#def backspace():
+ #   entry_ct.delete(len(entry_ct.get())-1, END)
 
 def click():
     global count
     count +=1
     print(f'You clicked the button {count} times')
 
+
 label_test = tk.Label(window,
                        text='Enter Your CCTB number :',
                         fg = 'black', bg = '#AED2A6',
                         font =('Arial', 30, 'bold'),
                         bd = 10,
-                        relief = RAISED,
+                        #relief = RAISED,
                         #padx = 20,
                        # pady = 20,
                         #image = photo,
@@ -51,7 +52,7 @@ label_test = tk.Label(window,
                # compound = 'top',)
 entry_ct = tk.Entry(window,
                     font=('Arial', 20),
-                    fg='#00FF00',
+                    fg='black',
                     bg = 'white',
                     )
 entry_ct.insert(0, 'CT')
@@ -59,12 +60,14 @@ submit_btn = tk.Button(window, text ='Submit', command = submit)
 
 delete_btn = tk.Button(window, text ='Delete', command = delete,)
 
-backspace_btn = tk.Button(window, text ='Backspace', command = backspace,)
+#backspace_btn = tk.Button(window, text ='Backspace', command = backspace,)
 
-label_test.pack()
-entry_ct.pack()
+label_test.grid(row = 0, column =0) 
+entry_ct.grid(row =1, column= 0, sticky = W)
 #button.pack()
-delete_btn.pack(), backspace_btn.pack(), submit_btn.pack()
+delete_btn.grid(row = 3, column = 0, sticky =W)
+#backspace_btn.grid()
+submit_btn.grid(row=2 , column = 0, sticky =  W)
 #label_test.place(x= 0, y = 0)
 window.mainloop()
 
