@@ -81,18 +81,19 @@ class tkinterApp(tk.Tk):
             frame = self.frames[cont]
             print("OK")
             Scheadule.get_global_variable(self)
+            
         else:
             print("NOT OK")
             frame = self.frames[cont]
         frame.tkraise()
 
-    def send_variable(self, cont, cctb_number):
-        if cont == Scheadule:
+    #def send_variable(self, cont, cctb_number):
+        #if cont == Scheadule:
             #Scheadule.create_widgets(self, cctb_number)
-            print(dir(Scheadule.__init__.__getattribute__))
-        else:
-            print("NOT OK2")
-            frame = self.frames[cont]        
+            #print()
+        #else:
+            #print("NOT OK2")
+            #frame = self.frames[cont]        
     
 class StartPage(tk.Frame):
     def __init__(self, parent, controller): 
@@ -139,7 +140,7 @@ class StartPage(tk.Frame):
             except ValueError:
               label_error_message.config(text="There is no such cctb number!")
 
-        #PLACEHOLDER
+        #PLACEHOLDER FUNCTIONS
         def on_focus_in(entry):
             if entry.cget('state') == 'disabled':
                 entry.configure(state='normal')
@@ -164,11 +165,11 @@ class StartPage(tk.Frame):
         confirm_btn = tk.Button(self, text = "Show scheadule",
                                 command = lambda : 
                                 [clear(),
-                                 controller.send_variable(Scheadule, cctb_number), 
+                                 #controller.send_variable(Scheadule, cctb_number), 
                                  controller.show_frame(Scheadule, cctb_number),
                                  confirm_btn.grid_forget(),
                                  delete()])
-
+        #PLACEHOLDER 
         entry_cctb_number.insert(0, 'CT:')
         entry_cctb_number.config(state='disabled')
         
@@ -213,8 +214,23 @@ class Scheadule(tk.Frame):
         def get_global_variable(self):
             global cctb_number
             self.cctb_number = cctb_number
-            print(f"cctb_number get_globalk_variable = {self.cctb_number}")
-            label_name.config(text="test")               
+            print(f"cctb_number get_globale_variable = {self.cctb_number}")
+            self.update_frame(self.cctb_number)            
+            label_name.config(text="test")
+
+        #def pass_value(self):
+            #value = self.value_entry.get()
+            #self.update_frame(value)
+ 
+        def update_frame(self, value):
+            # Destroy the current content of the frame
+            for widget in self.frame.winfo_children():
+                widget.destroy()
+ 
+            # Add new content to the frame based on the passed value
+            label_name = tk.Label(self.frame, text=f"Value passed: {value}")
+            label_name.grid(row = 1, columnspan = 7)
+                       
       # label of frame Layout Scheadule
         label = tk.Label(self, text ="Scheadule", font = 'Helvetica 15 bold')
         new_btn = tk.Button(self, text ="Search a new scheadule",
@@ -222,8 +238,8 @@ class Scheadule(tk.Frame):
 
 
         label_hours = tk.Label(self, text = "Hours")
-        label_monday = tk.Label(self, text = "Monday")
-        label_tuesday = tk.Label(self, text = "Tuesday")
+        label_monday = tk.Label(self, text = "Monday \t |")
+        label_tuesday = tk.Label(self, text = "Tuesday \t")
         label_wednesday = tk.Label(self, text = "Wednesday")
         label_thursday = tk.Label(self, text = "Thursday")
         label_friday = tk.Label(self, text = "Friday")
@@ -237,7 +253,7 @@ class Scheadule(tk.Frame):
         label_course.grid(row = 2, columnspan = 7)
         
       #Hourly labels
-        label_07am_08am = tk.Label(self, text = "07 am - 08 am")
+        label_07am_08am = tk.Label(self, text = "07 am - 08 am", foreground = "white", background = "black")
         label_08am_09am = tk.Label(self, text = "08 am - 09 am")
         label_09am_10am = tk.Label(self, text = "09 am - 10 am")    
         label_10am_11am = tk.Label(self, text = "10 am - 11 am")
