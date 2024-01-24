@@ -32,290 +32,239 @@ file_path = 'test2.csv'
 # Call the function to read the CSV file and create the dictionary of dictionaries
 result = read_csv_to_dict_of_dicts(file_path)
 
-# Print the result
-print(result)
+#Creating the window
+root = tk.Tk()
+root.title("Schedule App")
+#Seeting window to fullscreen
+root.attributes('-fullscreen', True)
 
-cctb_number = "here"
+cctb_number = "CCTB Number"
+
+#FUNCTIONS
+def clear():
+    label_name.config(text = "")
+    label_course.config(text = "")
+
+def delete():
+    entry_cctb_number.delete(0, END)
+
+def validate_number():
+    label_error_message.config(text="")
+    clear()
+    confirm_btn.grid_forget()
+    number = entry_cctb_number.get()
+    try:
+        int(number)
+        search_for_cctb_number()
+        cctb_number = number
+
+    except ValueError:
+        label_error_message.config(text="Please type only numbers!")
+
+
+def search_for_cctb_number():
+    cctb_number = int(entry_cctb_number.get())
+    show_name_and_course(cctb_number)
+
+
+def show_name_and_course(cctb_number):
+    try:
+        key = f'{cctb_number}'
+        row_select = result[key]
+        name = row_select['name']
+        course = row_select['course']
+        label_name.config(text = f"{name}")
+        label_course.config(text = f"{course}")  
+        confirm_btn.grid(row = 7, columnspan = 2, pady = 10)
+    except ValueError:
+        label_error_message.config(text="There is no such cctb number!")
+
+#PLACEHOLDER FUNCTIONS
+def on_focus_in(entry):
+    if entry.cget('state') == 'disabled':
+        entry.configure(state='normal')
+        entry.delete(0, 'end')
         
-#Class
-class tkinterApp(tk.Tk):
-    # __init__ function for class tkinterApp
-    def __init__(self, *args, **kwargs):
+def on_focus_out(entry, placeholder):
+    if entry.get() == "":
+        entry.insert(0, placeholder)
+        entry.configure(state='disabled')
 
-        # __init__ function for class Tk
-        tk.Tk.__init__(self, *args, **kwargs)
+def recreate_home():
+    label_home_page.grid(row = 0, column = 0, columnspan = 2, pady = 20)
+    label_cctb_number.grid(row = 1, column = 0, columnspan = 2, pady = 10)
+    entry_cctb_number.grid(row = 2, column = 0, columnspan = 2, pady = 10)
+    delete_btn.grid(row = 3, column = 0, pady = 10)
+    search_btn.grid(row = 3, column = 1, pady = 10)
+    label_error_message.grid(row = 4, column = 0, columnspan = 2)
+    label_name.grid(row = 5, column = 0, columnspan = 2)
+    label_course.grid(row = 6, column = 0, columnspan = 2)
+    delete()
 
-        # creating a container
-        container = tk.Frame(self)  
-        container.pack(side = "top", fill = "both", expand = True) 
-  
-        container.grid_rowconfigure(0, weight = 1)
-        container.grid_columnconfigure(0, weight = 1)
+    #label.grid_forget()
+    label_hours.grid_forget()
+    label_monday.grid_forget()
+    label_tuesday.grid_forget()
+    label_wednesday.grid_forget()
+    label_thursday.grid_forget()
+    label_friday.grid_forget()
+    label_saturday.grid_forget()
+    label_sunday.grid_forget()
+    label_07am_08am.grid_forget()
+    label_08am_09am.grid_forget()
+    label_09am_10am.grid_forget()
+    label_10am_11am.grid_forget()
+    label_11am_12pm.grid_forget()
+    label_12pm_01pm.grid_forget()
+    label_01pm_02pm.grid_forget()
+    label_02pm_03pm.grid_forget()
+    label_03pm_04pm.grid_forget()
+    label_04pm_05pm.grid_forget()
+    label_05pm_06pm.grid_forget()
+    label_06pm_07pm.grid_forget()
+    label_07pm_08pm.grid_forget()
+    label_08pm_09pm.grid_forget()
+    label_09pm_10pm.grid_forget()
+    new_btn.grid_forget()
+    label_name_schedule.grid_forget()
+    label_course_schedule.grid_forget()
+
+def create_schedule_table():
+    
+    label_home_page.grid_forget()
+    label_cctb_number.grid_forget()
+    entry_cctb_number.grid_forget()
+    delete_btn.grid_forget()
+    search_btn.grid_forget()
+    label_error_message.grid_forget()
+    confirm_btn.grid_forget()
+    clear()
+        
+                              
+    # putting the button in its place 
+    # by using grid
+    label_schedule.grid(row = 0, columnspan = 7)
+    label_hours.grid(row = 3, column = 0)
+    label_monday.grid(row = 3, column = 1)
+    label_tuesday.grid(row = 3, column = 2)
+    label_wednesday.grid(row = 3, column = 3)
+    label_thursday.grid(row = 3, column = 4)
+    label_friday.grid(row = 3, column = 5)
+    label_saturday.grid(row = 3, column = 6)
+    label_sunday.grid(row = 3, column = 7)
+    label_07am_08am.grid(row = 4, column = 0)
+    label_08am_09am.grid(row = 5, column = 0)
+    label_09am_10am.grid(row = 6, column = 0)
+    label_10am_11am.grid(row = 7, column = 0)
+    label_11am_12pm.grid(row = 8, column = 0)
+    label_12pm_01pm.grid(row = 9, column = 0)
+    label_01pm_02pm.grid(row = 10, column = 0)
+    label_02pm_03pm.grid(row = 11, column = 0)
+    label_03pm_04pm.grid(row = 12, column = 0)
+    label_04pm_05pm.grid(row = 13, column = 0)
+    label_05pm_06pm.grid(row = 14, column = 0)
+    label_06pm_07pm.grid(row = 15, column = 0)
+    label_07pm_08pm.grid(row = 16, column = 0)
+    label_08pm_09pm.grid(row = 17, column = 0)
+    label_09pm_10pm.grid(row = 18, column = 0)
+    new_btn.grid(row = 19, columnspan = 7, padx = 10, pady = 10)
+    label_name_schedule.grid(row = 1, columnspan = 7)
+    label_course_schedule.grid(row = 2, columnspan = 7) 
+
 
           
-        # initializing frames to an empty array
-        self.frames = {}  
-
-        # iterating through a tuple consisting
-        # of the different page layouts
-        for F in (StartPage, Scheadule):
-  
-            frame = F(container, self)
-  
-            # initializing frame of that object from
-            # startpage, scheadule respectively with 
-            # for loop
-            self.frames[F] = frame 
-  
-            frame.grid(row = 0, column = 0, sticky ="nsew")
-  
-        self.show_frame(StartPage, cctb_number)
-
-    # to display the current frame passed as
-    # parameter
-    def show_frame(self, cont, cctb_number):
-        #frame = self.frames[cont]
-        #frame.tkraise()
-        print(f"checking: {cctb_number}")
-        if cont == Scheadule:
-            frame = self.frames[cont]
-            print("OK")
-            Scheadule.get_global_variable(self)
-            
-        else:
-            print("NOT OK")
-            frame = self.frames[cont]
-        frame.tkraise()
-
-    #def send_variable(self, cont, cctb_number):
-        #if cont == Scheadule:
-            #Scheadule.create_widgets(self, cctb_number)
-            #print()
-        #else:
-            #print("NOT OK2")
-            #frame = self.frames[cont]        
-    
-class StartPage(tk.Frame):
-    def __init__(self, parent, controller): 
-        tk.Frame.__init__(self, parent)
+# label of frame Layout Scheadule
+label_schedule = tk.Label(root, text ="Schedule", font = 'Helvetica 15 bold')
+label_name_schedule = tk.Label(root, text = f"{cctb_number}")
+label_course_schedule = tk.Label(root, text = f"{cctb_number}")
+new_btn = tk.Button(root, text ="Search a new scheadule",
+                            command = recreate_home)
         
-        #Functions
+label_hours = tk.Label(root, text = "Hours \t",
+    relief=RAISED, font=('Constantia', 13), bg='#2c598a',padx=10, pady=5, width=15)
+label_monday = tk.Label(root, text = "Monday \t",
+    relief=RAISED, font=('Constantia', 13),bg ='#17ffcb',padx=10, pady=5, width=15)
+label_tuesday = tk.Label(root, text = "Tuesday \t", 
+    relief=RAISED,font=('Constantia', 13), bg='#75b3f7',padx=10, pady=5, width=15)
+label_wednesday = tk.Label(root, text = "Wednesday \t",
+    relief=RAISED, font=('Constantia', 13), bg ='#17ffcb',padx=10, pady=5, width=15)
+label_thursday = tk.Label(root, text = "Thursday \t",
+    relief=RAISED, font=('Constantia', 13), bg ='#75b3f7',padx=10, pady=5, width=15)
+label_friday = tk.Label(root, text = "Friday \t", 
+    relief=RAISED,font=('Constantia', 13), bg='#17ffcb',padx=10, pady=5, width=15)
+label_saturday = tk.Label(root, text = "Saturday \t",
+    relief=RAISED, font=('Constantia', 13), bg ='#75b3f7',padx=10, pady=5, width=15)
+label_sunday = tk.Label(root, text = "Sunday \t", 
+    relief=RAISED,font=('Constantia', 13), bg='#17ffcb',padx=10, pady=5, width=15)     
+         
 
-        def clear():
-            label_name.config(text = "")
-            label_course.config(text = "")
-
-        def delete():
-            entry_cctb_number.delete(0, END)
-
-        def validate_number():
-            label_error_message.config(text="")
-            clear()
-            confirm_btn.grid_forget()
-            number = entry_cctb_number.get()
-            try:
-                int(number)
-                search_for_cctb_number()
-                global cctb_number
-                cctb_number = number
-
-            except ValueError:
-                label_error_message.config(text="Please type only numbers!")
-
-
-        def search_for_cctb_number():
-            self.cctb_number = int(entry_cctb_number.get())
-            show_name_and_course(cctb_number)
-
-
-        def show_name_and_course(cctb_number):
-            try:
-              key = f'{self.cctb_number}'
-              row_select = result[key]
-              name = row_select['name']
-              course = row_select['course']
-              label_name.config(text = f"{name}")
-              label_course.config(text = f"{course}")  
-              confirm_btn.grid(row = 6, columnspan = 2, pady = 10)
-            except ValueError:
-              label_error_message.config(text="There is no such cctb number!")
-
-        #PLACEHOLDER FUNCTIONS
-        def on_focus_in(entry):
-            if entry.cget('state') == 'disabled':
-                entry.configure(state='normal')
-                entry.delete(0, 'end')
         
-        def on_focus_out(entry, placeholder):
-            if entry.get() == "":
-                entry.insert(0, placeholder)
-                entry.configure(state='disabled')
+#Hourly labels
+label_07am_08am = tk.Label(root, text = "07 am - 08 am",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_08am_09am = tk.Label(root, text = "08 am - 09 am",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_09am_10am = tk.Label(root, text = "09 am - 10 am",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)    
+label_10am_11am = tk.Label(root, text = "10 am - 11 am",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_11am_12pm = tk.Label(root, text = "11 am - 12 am",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_12pm_01pm = tk.Label(root, text = "12 pm - 01 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_01pm_02pm = tk.Label(root, text = "01 pm - 02 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_02pm_03pm = tk.Label(root, text = "02 pm - 03 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_03pm_04pm = tk.Label(root, text = "03 pm - 04 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_04pm_05pm = tk.Label(root, text = "04 pm - 05 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_05pm_06pm = tk.Label(root, text = "05 pm - 06 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_06pm_07pm = tk.Label(root, text = "06 pm - 07 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_07pm_08pm = tk.Label(root, text = "07 pm - 08 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_08pm_09pm = tk.Label(root, text = "08 pm - 09 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+label_09pm_10pm = tk.Label(root, text = "09 pm - 10 pm",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
 
 
-        # label of frame Layout HomePage
-        label_cctb_number = tk.Label(self, text="Enter student's CCTB number", pady = 10)
-        entry_cctb_number = tk.Entry(self)
-        delete_btn = tk.Button(self, text ="Delete",
+# label of frame Layout HomePage
+label_home_page = tk.Label(root, text = "Welcome to Schedule APP!", font="Helvetica 20 bold")
+label_cctb_number = tk.Label(root, text="Enter student's CCTB number", pady = 10)
+entry_cctb_number = tk.Entry(root)
+delete_btn = tk.Button(root, text ="Delete",
                                command = delete)
-        search_btn = tk.Button(self, text="Search", command = validate_number)
-        label_name = tk.Label(self, text = "")
-        label_course = tk.Label(self, text = "")
-        label_error_message = tk.Label(self, text = "", font='Helvetica 10 bold', foreground = "red")
+search_btn = tk.Button(root, text="Search", command = validate_number)
+label_name = tk.Label(root, text = "")
+label_course = tk.Label(root, text = "")
+label_error_message = tk.Label(root, text = "", font='Helvetica 10 bold', foreground = "red")
+confirm_btn = tk.Button(root, text = "Show scheadule",
+                                command = create_schedule_table)
 
-        confirm_btn = tk.Button(self, text = "Show scheadule",
-                                command = lambda : 
-                                [clear(),
-                                 #controller.send_variable(Scheadule, cctb_number), 
-                                 controller.show_frame(Scheadule, cctb_number),
-                                 confirm_btn.grid_forget(),
-                                 delete()])
-        #PLACEHOLDER 
-        entry_cctb_number.insert(0, 'CT:')
-        entry_cctb_number.config(state='disabled')
+# putting the grid in its place by using grid in HomePage
+label_home_page.grid(row = 0, column = 0, columnspan = 2, pady = 20)
+label_cctb_number.grid(row = 1, column = 0, columnspan = 2, pady = 10)
+entry_cctb_number.grid(row = 2, column = 0, columnspan = 2, pady = 10)
+delete_btn.grid(row = 3, column = 0, pady = 10)
+search_btn.grid(row = 3, column = 1, pady = 10)
+label_error_message.grid(row = 4, column = 0, columnspan = 2)
+label_name.grid(row = 5, column = 0, columnspan = 2)
+label_course.grid(row = 6, column = 0, columnspan = 2)
+
+
+#PLACEHOLDER 
+entry_cctb_number.insert(0, 'CT:')
+entry_cctb_number.config(state='disabled')
         
-        x_focus_in = entry_cctb_number.bind('<Button-1>', 
-        lambda x: on_focus_in(entry_cctb_number))
-        x_focus_out = entry_cctb_number.bind('<FocusOut>', 
-        lambda x: on_focus_out(entry_cctb_number, 'CT:'))
+x_focus_in = entry_cctb_number.bind('<Button-1>', 
+    lambda x: on_focus_in(entry_cctb_number))
+x_focus_out = entry_cctb_number.bind('<FocusOut>', 
+    lambda x: on_focus_out(entry_cctb_number, 'CT:'))
         
-                                 
-        # putting the grid in its place by using
-        # grid
-        label_cctb_number.grid(row = 0, column = 0, columnspan = 2, pady = 10)
-        entry_cctb_number.grid(row = 1, column = 0, columnspan = 2, pady = 10)
-        delete_btn.grid(row = 2, column = 0, pady = 10)
-        search_btn.grid(row = 2, column = 1, pady = 10)
-        label_name.grid(row = 4, column = 0, columnspan = 2)
-        label_course.grid(row = 5, column = 0, columnspan = 2)
-        label_error_message.grid(row = 3, column = 0, columnspan = 2)
+                                
 
-# second window frame page1 
-class Scheadule(tk.Frame):
-
-    def get_global_variable(self):
-        global cctb_number
-        self.cctb_number = cctb_number
-        print(f"cctb_number get_globalk_variable = {self.cctb_number}")
-        
-
-    def __init__(self, parent, controller):
-
-        tk.Frame.__init__(self, parent)
-        #self.create_widgets(cctb_number)
-
-    #def create_widgets(self, cctb_number):     
-
-        #self.get_global_variable()
-        def printing():
-            global cctb_number
-            self.cctb_number = cctb_number
-            print(f"cctb_number second time= {self.cctb_number}")
-        
-        def get_global_variable(self):
-            global cctb_number
-            self.cctb_number = cctb_number
-            print(f"cctb_number get_globale_variable = {self.cctb_number}")
-            self.update_frame(self.cctb_number)            
-            label_name.config(text="test")
-
-        #def pass_value(self):
-            #value = self.value_entry.get()
-            #self.update_frame(value)
- 
-        def update_frame(self, value):
-            # Destroy the current content of the frame
-            for widget in self.frame.winfo_children():
-                widget.destroy()
- 
-            # Add new content to the frame based on the passed value
-            label_name = tk.Label(self.frame, text=f"Value passed: {value}")
-            label_name.grid(row = 1, columnspan = 7)
-                       
-      # label of frame Layout Scheadule
-        label = tk.Label(self, text ="Scheadule", font = 'Helvetica 15 bold')
-        new_btn = tk.Button(self, text ="Search a new scheadule",
-                            command = lambda : controller.show_frame(StartPage, cctb_number))
-
-
-        label_hours = tk.Label(self, text = "Hours")
-        label_monday = tk.Label(self, text = "Monday \t |")
-        label_tuesday = tk.Label(self, text = "Tuesday \t")
-        label_wednesday = tk.Label(self, text = "Wednesday")
-        label_thursday = tk.Label(self, text = "Thursday")
-        label_friday = tk.Label(self, text = "Friday")
-        label_saturday = tk.Label(self, text = "Saturday")
-        label_sunday = tk.Label(self, text = "Sunday")     
-
-
-        label_name = tk.Label(self, text = f"{cctb_number}")
-        label_course = tk.Label(self, text = f"{cctb_number}")
-        label_name.grid(row = 1, columnspan = 7)
-        label_course.grid(row = 2, columnspan = 7)
-        
-      #Hourly labels
-        label_07am_08am = tk.Label(self, text = "07 am - 08 am", foreground = "white", background = "black")
-        label_08am_09am = tk.Label(self, text = "08 am - 09 am")
-        label_09am_10am = tk.Label(self, text = "09 am - 10 am")    
-        label_10am_11am = tk.Label(self, text = "10 am - 11 am")
-        label_11am_12pm = tk.Label(self, text = "11 am - 12 am")
-        label_12pm_01pm = tk.Label(self, text = "12 pm - 01 pm")
-        label_01pm_02pm = tk.Label(self, text = "01 pm - 02 pm")
-        label_02pm_03pm = tk.Label(self, text = "02 pm - 03 pm")
-        label_03pm_04pm = tk.Label(self, text = "03 pm - 04 pm")
-        label_04pm_05pm = tk.Label(self, text = "04 pm - 05 pm")
-        label_05pm_06pm = tk.Label(self, text = "05 pm - 06 pm")
-        label_06pm_07pm = tk.Label(self, text = "06 pm - 07 pm")
-        label_07pm_08pm = tk.Label(self, text = "07 pm - 08 pm")
-        label_08pm_09pm = tk.Label(self, text = "08 pm - 09 pm")
-        label_09pm_10pm = tk.Label(self, text = "09 pm - 10 pm")
-
-       
-        # putting the button in its place 
-        # by using grid
-        label.grid(row = 0, columnspan = 7)
-        #label_name.grid(row = 1, columnspan = 7)
-        #label_course.grid(row = 2, columnspan = 7)
-        label_hours.grid(row = 3, column = 0)
-        label_monday.grid(row = 3, column = 1)
-        label_tuesday.grid(row = 3, column = 2)
-        label_wednesday.grid(row = 3, column = 3)
-        label_thursday.grid(row = 3, column = 4)
-        label_friday.grid(row = 3, column = 5)
-        label_saturday.grid(row = 3, column = 6)
-        label_sunday.grid(row = 3, column = 7)
-        label_07am_08am.grid(row = 4, column = 0)
-        label_08am_09am.grid(row = 5, column = 0)
-        label_09am_10am.grid(row = 6, column = 0)
-        label_10am_11am.grid(row = 7, column = 0)
-        label_11am_12pm.grid(row = 8, column = 0)
-        label_12pm_01pm.grid(row = 9, column = 0)
-        label_01pm_02pm.grid(row = 10, column = 0)
-        label_02pm_03pm.grid(row = 11, column = 0)
-        label_03pm_04pm.grid(row = 12, column = 0)
-        label_04pm_05pm.grid(row = 13, column = 0)
-        label_05pm_06pm.grid(row = 14, column = 0)
-        label_06pm_07pm.grid(row = 15, column = 0)
-        label_07pm_08pm.grid(row = 16, column = 0)
-        label_08pm_09pm.grid(row = 17, column = 0)
-        label_09pm_10pm.grid(row = 18, column = 0)
-        new_btn.grid(row = 19, columnspan = 7, padx = 10, pady = 10)
-
-
-        test_btn = Button(self, text = "test", command = printing)
-        test_btn.grid()
-
-        print(f"Scheduale frame iniciatized {cctb_number}")
-
-# Driver Code
-app = tkinterApp()
-app.title("CCTB")
-app.geometry('200x300')
-app.mainloop()
-
-
-
-
-
-
-
-
+root.mainloop()
