@@ -94,14 +94,14 @@ def on_focus_out(entry, placeholder):
         entry.configure(state='disabled')
 
 def recreate_home():
-    label_home_page.grid(row = 0, column = 0, columnspan = 2, pady = 20)
-    label_cctb_number.grid(row = 1, column = 0, columnspan = 2, pady = 10)
-    entry_cctb_number.grid(row = 2, column = 0, columnspan = 2, pady = 10)
-    delete_btn.grid(row = 3, column = 0, pady = 10)
-    search_btn.grid(row = 3, column = 1, pady = 10)
-    label_error_message.grid(row = 4, column = 0, columnspan = 2)
-    label_name.grid(row = 5, column = 0, columnspan = 2)
-    label_course.grid(row = 6, column = 0, columnspan = 2)
+    label_home_page.place(anchor = CENTER, relx = .5, rely = .2)
+    label_cctb_number.place(anchor = CENTER, relx = .5, rely = .25)
+    entry_cctb_number.place(anchor = CENTER, relx = .5, rely = .3)
+    delete_btn.place(anchor = CENTER, relx = .47, rely = .35)
+    search_btn.place(anchor = CENTER, relx = .53, rely = .35)
+    label_error_message.place(anchor = CENTER, relx = .5, rely = .4)
+    label_name.place(anchor = CENTER, relx = .5, rely = .45)
+    label_course.place(anchor = CENTER, relx = .5, rely = .5)
     delete()
     
 
@@ -130,6 +130,7 @@ def recreate_home():
     label_08pm_09pm.grid_forget()
     label_09pm_10pm.grid_forget()
     new_btn.grid_forget()
+    label_schedule.grid_forget()
     label_name_schedule.grid_forget()
     label_course_schedule.grid_forget()
 
