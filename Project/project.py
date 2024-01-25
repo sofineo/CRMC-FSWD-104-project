@@ -38,6 +38,8 @@ root.title("Schedule App")
 #Seeting window to fullscreen
 root.attributes('-fullscreen', True)
 
+# Configure columns and rows to expand equally
+
 cctb_number = "CCTB Number"
 
 #FUNCTIONS
@@ -75,7 +77,8 @@ def show_name_and_course(cctb_number):
         course = row_select['course']
         label_name.config(text = f"{name}")
         label_course.config(text = f"{course}")  
-        confirm_btn.grid(row = 7, columnspan = 2, pady = 10)
+        #confirm_btn.grid(row = 7, columnspan = 2, pady = 10)
+        confirm_btn.place(anchor = CENTER, relx = .5, rely = .55)
     except ValueError:
         label_error_message.config(text="There is no such cctb number!")
 
@@ -100,8 +103,9 @@ def recreate_home():
     label_name.grid(row = 5, column = 0, columnspan = 2)
     label_course.grid(row = 6, column = 0, columnspan = 2)
     delete()
+    
 
-    #label.grid_forget()
+    #Using grid_forget to hide widgets from the Schedule page
     label_hours.grid_forget()
     label_monday.grid_forget()
     label_tuesday.grid_forget()
@@ -130,14 +134,15 @@ def recreate_home():
     label_course_schedule.grid_forget()
 
 def create_schedule_table():
-    
-    label_home_page.grid_forget()
-    label_cctb_number.grid_forget()
-    entry_cctb_number.grid_forget()
-    delete_btn.grid_forget()
-    search_btn.grid_forget()
-    label_error_message.grid_forget()
-    confirm_btn.grid_forget()
+
+    #Using grid_forget to hide the labels from the Home Page
+    label_home_page.place_forget()
+    label_cctb_number.place_forget()
+    entry_cctb_number.place_forget()
+    delete_btn.place_forget()
+    search_btn.place_forget()
+    label_error_message.place_forget()
+    confirm_btn.place_forget()
     clear()
         
                               
@@ -169,7 +174,8 @@ def create_schedule_table():
     label_09pm_10pm.grid(row = 18, column = 0)
     new_btn.grid(row = 19, columnspan = 7, padx = 10, pady = 10)
     label_name_schedule.grid(row = 1, columnspan = 7)
-    label_course_schedule.grid(row = 2, columnspan = 7) 
+    label_course_schedule.grid(row = 2, columnspan = 7)
+ 
 
 
           
@@ -241,20 +247,27 @@ delete_btn = tk.Button(root, text ="Delete",
 search_btn = tk.Button(root, text="Search", command = validate_number)
 label_name = tk.Label(root, text = "")
 label_course = tk.Label(root, text = "")
-label_error_message = tk.Label(root, text = "", font='Helvetica 10 bold', foreground = "red")
+label_error_message = tk.Label(root, text = "", font='Helvetica 15 bold', foreground = "red")
 confirm_btn = tk.Button(root, text = "Show scheadule",
                                 command = create_schedule_table)
 
 # putting the grid in its place by using grid in HomePage
-label_home_page.grid(row = 0, column = 0, columnspan = 2, pady = 20)
-label_cctb_number.grid(row = 1, column = 0, columnspan = 2, pady = 10)
-entry_cctb_number.grid(row = 2, column = 0, columnspan = 2, pady = 10)
-delete_btn.grid(row = 3, column = 0, pady = 10)
-search_btn.grid(row = 3, column = 1, pady = 10)
-label_error_message.grid(row = 4, column = 0, columnspan = 2)
-label_name.grid(row = 5, column = 0, columnspan = 2)
-label_course.grid(row = 6, column = 0, columnspan = 2)
-
+#label_home_page.grid(row = 0, column = 0, columnspan = 2, pady = 20)
+label_home_page.place(anchor = CENTER, relx = .5, rely = .2)
+#label_cctb_number.grid(row = 1, column = 0, columnspan = 2, pady = 10)
+label_cctb_number.place(anchor = CENTER, relx = .5, rely = .25)
+#entry_cctb_number.grid(row = 2, column = 0, columnspan = 2, pady = 10)
+entry_cctb_number.place(anchor = CENTER, relx = .5, rely = .3)
+#delete_btn.grid(row = 3, column = 0, pady = 10)
+delete_btn.place(anchor = CENTER, relx = .47, rely = .35)
+#search_btn.grid(row = 3, column = 1, pady = 10)
+search_btn.place(anchor = CENTER, relx = .53, rely = .35)
+#label_error_message.grid(row = 4, column = 0, columnspan = 2)
+label_error_message.place(anchor = CENTER, relx = .5, rely = .4)
+#label_name.grid(row = 5, column = 0, columnspan = 2)
+label_name.place(anchor = CENTER, relx = .5, rely = .45)
+#label_course.grid(row = 6, column = 0, columnspan = 2)
+label_course.place(anchor = CENTER, relx = .5, rely = .5)
 
 #PLACEHOLDER 
 entry_cctb_number.insert(0, 'CT:')
