@@ -134,6 +134,57 @@ def recreate_home():
     label_name_schedule.grid_forget()
     label_course_schedule.grid_forget()
 
+    #forgeting Monday labels
+    label_monday_07am.grid_forget()    
+    label_monday_08am.grid_forget()   
+    label_monday_09am.grid_forget()    
+    label_monday_10am.grid_forget() 
+    label_monday_11am.grid_forget()    
+    label_monday_12pm.grid_forget()   
+    label_monday_01pm.grid_forget()    
+    label_monday_02pm.grid_forget() 
+    label_monday_03pm.grid_forget()   
+    label_monday_04pm.grid_forget()   
+    label_monday_05pm.grid_forget()    
+    label_monday_06pm.grid_forget()
+    label_monday_07pm.grid_forget()
+    label_monday_08pm.grid_forget()
+    label_monday_09pm.grid_forget()
+
+    #forgeting Tuesday labels
+    label_tuesday_07am.grid_forget()  
+    label_tuesday_08am.grid_forget()  
+    label_tuesday_09am.grid_forget()  
+    label_tuesday_10am.grid_forget()
+    label_tuesday_11am.grid_forget()  
+    label_tuesday_12pm.grid_forget() 
+    label_tuesday_01pm.grid_forget()  
+    label_tuesday_02pm.grid_forget()
+    label_tuesday_03pm.grid_forget()   
+    label_tuesday_04pm.grid_forget()  
+    label_tuesday_05pm.grid_forget() 
+    label_tuesday_06pm.grid_forget() 
+    label_tuesday_07pm.grid_forget()   
+    label_tuesday_08pm.grid_forget()   
+    label_tuesday_09pm.grid_forget()
+
+    #forgeting Wednesday labels
+    label_wednesday_07am.grid_forget()  
+    label_wednesday_08am.grid_forget()  
+    label_wednesday_09am.grid_forget()  
+    label_wednesday_10am.grid_forget()
+    label_wednesday_11am.grid_forget()  
+    label_wednesday_12pm.grid_forget() 
+    label_wednesday_01pm.grid_forget()  
+    label_wednesday_02pm.grid_forget()
+    label_wednesday_03pm.grid_forget()   
+    label_wednesday_04pm.grid_forget()  
+    label_wednesday_05pm.grid_forget() 
+    label_wednesday_06pm.grid_forget() 
+    label_wednesday_07pm.grid_forget()   
+    label_wednesday_08pm.grid_forget()   
+    label_wednesday_09pm.grid_forget()
+
 def create_schedule_table():
 
     #Using grid_forget to hide the labels from the Home Page
@@ -176,10 +227,58 @@ def create_schedule_table():
     new_btn.grid(row = 19, columnspan = 7, padx = 10, pady = 10)
     label_name_schedule.grid(row = 1, columnspan = 7)
     label_course_schedule.grid(row = 2, columnspan = 7)
- 
 
+    #grid for Monday
+    label_monday_07am.grid(row = 4, column = 1)    
+    label_monday_08am.grid(row = 5, column = 1)   
+    label_monday_09am.grid(row = 6, column = 1)    
+    label_monday_10am.grid(row = 7, column = 1) 
+    label_monday_11am.grid(row = 8, column = 1)    
+    label_monday_12pm.grid(row = 9, column = 1)   
+    label_monday_01pm.grid(row = 10, column = 1)    
+    label_monday_02pm.grid(row = 11, column = 1) 
+    label_monday_03pm.grid(row = 12, column = 1)    
+    label_monday_04pm.grid(row = 13, column = 1)   
+    label_monday_05pm.grid(row = 14, column = 1)    
+    label_monday_06pm.grid(row = 15, column = 1) 
+    label_monday_07pm.grid(row = 16, column = 1)    
+    label_monday_08pm.grid(row = 17, column = 1)   
+    label_monday_09pm.grid(row = 18, column = 1)    
 
-          
+    #grid for Tuesday
+    label_tuesday_07am.grid(row = 4, column = 2)    
+    label_tuesday_08am.grid(row = 5, column = 2)   
+    label_tuesday_09am.grid(row = 6, column = 2)    
+    label_tuesday_10am.grid(row = 7, column = 2) 
+    label_tuesday_11am.grid(row = 8, column = 2)    
+    label_tuesday_12pm.grid(row = 9, column = 2)   
+    label_tuesday_01pm.grid(row = 10, column = 2)    
+    label_tuesday_02pm.grid(row = 11, column = 2) 
+    label_tuesday_03pm.grid(row = 12, column = 2)    
+    label_tuesday_04pm.grid(row = 13, column = 2)   
+    label_tuesday_05pm.grid(row = 14, column = 2)    
+    label_tuesday_06pm.grid(row = 15, column = 2) 
+    label_tuesday_07pm.grid(row = 16, column = 2)    
+    label_tuesday_08pm.grid(row = 17, column = 2)   
+    label_tuesday_09pm.grid(row = 18, column = 2)
+
+    #grid for Wednesday
+    label_wednesday_07am.grid(row = 4, column = 3)    
+    label_wednesday_08am.grid(row = 5, column = 3)   
+    label_wednesday_09am.grid(row = 6, column = 3)    
+    label_wednesday_10am.grid(row = 7, column = 3) 
+    label_wednesday_11am.grid(row = 8, column = 3)    
+    label_wednesday_12pm.grid(row = 9, column = 3)   
+    label_wednesday_01pm.grid(row = 10, column = 3)    
+    label_wednesday_02pm.grid(row = 11, column = 3) 
+    label_wednesday_03pm.grid(row = 12, column = 3)    
+    label_wednesday_04pm.grid(row = 13, column = 3)   
+    label_wednesday_05pm.grid(row = 14, column = 3)    
+    label_wednesday_06pm.grid(row = 15, column = 3) 
+    label_wednesday_07pm.grid(row = 16, column = 3)    
+    label_wednesday_08pm.grid(row = 17, column = 3)   
+    label_wednesday_09pm.grid(row = 18, column = 3)
+    
 # label of frame Layout Scheadule
 label_schedule = tk.Label(root, text ="Schedule", font = 'Helvetica 15 bold')
 label_name_schedule = tk.Label(root, text = f"{cctb_number}")
@@ -187,58 +286,154 @@ label_course_schedule = tk.Label(root, text = f"{cctb_number}")
 new_btn = tk.Button(root, text ="Search a new scheadule",
                             command = recreate_home)
         
-label_hours = tk.Label(root, text = "Hours \t",
-    relief=RAISED, font=('Constantia', 13), bg='#2c598a',padx=10, pady=5, width=15)
+label_hours = tk.Label(root, text = "Hours",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
 label_monday = tk.Label(root, text = "Monday \t",
-    relief=RAISED, font=('Constantia', 13),bg ='#17ffcb',padx=10, pady=5, width=15)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
 label_tuesday = tk.Label(root, text = "Tuesday \t", 
-    relief=RAISED,font=('Constantia', 13), bg='#75b3f7',padx=10, pady=5, width=15)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
 label_wednesday = tk.Label(root, text = "Wednesday \t",
-    relief=RAISED, font=('Constantia', 13), bg ='#17ffcb',padx=10, pady=5, width=15)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
 label_thursday = tk.Label(root, text = "Thursday \t",
-    relief=RAISED, font=('Constantia', 13), bg ='#75b3f7',padx=10, pady=5, width=15)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
 label_friday = tk.Label(root, text = "Friday \t", 
-    relief=RAISED,font=('Constantia', 13), bg='#17ffcb',padx=10, pady=5, width=15)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
 label_saturday = tk.Label(root, text = "Saturday \t",
-    relief=RAISED, font=('Constantia', 13), bg ='#75b3f7',padx=10, pady=5, width=15)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
 label_sunday = tk.Label(root, text = "Sunday \t", 
-    relief=RAISED,font=('Constantia', 13), bg='#17ffcb',padx=10, pady=5, width=15)     
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)     
          
 
         
 #Hourly labels
 label_07am_08am = tk.Label(root, text = "07 am - 08 am",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
 label_08am_09am = tk.Label(root, text = "08 am - 09 am",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
 label_09am_10am = tk.Label(root, text = "09 am - 10 am",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)    
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")    
 label_10am_11am = tk.Label(root, text = "10 am - 11 am",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
 label_11am_12pm = tk.Label(root, text = "11 am - 12 am",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
 label_12pm_01pm = tk.Label(root, text = "12 pm - 01 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
 label_01pm_02pm = tk.Label(root, text = "01 pm - 02 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
 label_02pm_03pm = tk.Label(root, text = "02 pm - 03 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
 label_03pm_04pm = tk.Label(root, text = "03 pm - 04 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
 label_04pm_05pm = tk.Label(root, text = "04 pm - 05 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
 label_05pm_06pm = tk.Label(root, text = "05 pm - 06 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
 label_06pm_07pm = tk.Label(root, text = "06 pm - 07 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
 label_07pm_08pm = tk.Label(root, text = "07 pm - 08 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
 label_08pm_09pm = tk.Label(root, text = "08 pm - 09 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
 label_09pm_10pm = tk.Label(root, text = "09 pm - 10 pm",
-    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17)
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+
+#Monday labels
+label_monday_07am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_monday_08am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_monday_09am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_monday_10am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_monday_11am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_monday_12pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_monday_01pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_monday_02pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_monday_03pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_monday_04pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_monday_05pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_monday_06pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_monday_07pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_monday_08pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_monday_09pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")   
 
 
+#Tuesday labels
+label_tuesday_07am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_tuesday_08am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_tuesday_09am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_tuesday_10am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_tuesday_11am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_tuesday_12pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_tuesday_01pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_tuesday_02pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_tuesday_03pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_tuesday_04pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_tuesday_05pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_tuesday_06pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_tuesday_07pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_tuesday_08pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_tuesday_09pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")  
+
+#Wednesday labels
+label_wednesday_07am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_wednesday_08am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_wednesday_09am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_wednesday_10am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_wednesday_11am = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_wednesday_12pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_wednesday_01pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_wednesday_02pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_wednesday_03pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_wednesday_04pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_wednesday_05pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_wednesday_06pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_wednesday_07pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")
+label_wednesday_08pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "black", fg = "white")
+label_wednesday_09pm = tk.Label(root, text = "--",
+    font=('Arial', 11), borderwidth=1, relief=RAISED,padx=10, pady=5, width=17, bg = "white")  
+        
 # label of frame Layout HomePage
 label_home_page = tk.Label(root, text = "Welcome to Schedule APP!", font="Helvetica 20 bold")
 label_cctb_number = tk.Label(root, text="Enter student's CCTB number", pady = 10)
